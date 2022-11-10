@@ -7,8 +7,8 @@
 
 void welcome_screen(void){
         printf("\n\t=================================================\n");
-        printf("\t               Simple_Shell\n");
+        printf("\t                Simple_Shell\n");
         printf("\t------------------------------------------------\n");
-        printf("\t             A lightweight UNIX command interpreter\n");
+        printf("\t   A lightweight UNIX command interpreter\n");
         printf("\t=================================================\n\n\n");
 }
