@@ -1,7 +1,7 @@
 #include "shell.h"
 
 /**
- * welcome_screen - prints out a basic starting screen on first execution of
+ * welcome_screen - prints out a basic starting screen on first execution of the shell in interactive mode.
  * the shell in a new proccess.
  */
 
