@@ -1,26 +1,32 @@
 #include "shell.h"
 
 /**
- * main - handles command execution for the shell
- *
- * Return: on failure (1)
- */
+* main - handles command execution for the shell
+*
+* @ac: argument count
+* @av: argument vectors
+*
+* Return: on failure (1)
+*/
 
 int main(int ac __attribute__((unused)), char *av[])
 {
 	
-	char *rm_wsp, *pstr, *str_token, *av_token, *buff, *pthnstr;
+	char *rm_wsp, *pstr, *str_token, *tkn,  *av_token, *buff, *pthnstr;
 /*	char clear_screen[] = "\e[1;1H\e[2J";*/
-	int prompt_state, i;
+	int prompt_state, i, GBSH_PID, GBSH_IS_INTERACTIVE;
 	char **argvec, **envec;
 
-
+GBSH_PID = getpid();
+        // The shell is interactive if STDIN is the terminal  
+        GBSH_IS_INTERACTIVE = isatty(STDIN_FILENO);
+		
 /*prints the starting screen of the shell.*/
-	welcome_screen();
 
 
 /*dynamically allocates memory for various strings*/
 	pstr = malloc(sizeof(char) * 1024);	
+	tkn = malloc(sizeof(char) * 1024);	
 	rm_wsp = malloc(sizeof(char) * 2);	
 	av_token = malloc(sizeof(char) * 20);
 	str_token = malloc(sizeof(char) * strlen(pstr));
@@ -32,6 +38,11 @@ int main(int ac __attribute__((unused)), char *av[])
 
 	prompt_state = 1;
 
+if (GBSH_IS_INTERACTIVE) {
+
+	welcome_screen();
+
+
 /*starts up the prompt;*/
 	pstr = prompt();
 
@@ -41,12 +52,12 @@ int main(int ac __attribute__((unused)), char *av[])
 	{
 		pstr = prompt();
 	}
-
+}
 
 /*loops through to find what command the user typed in at the prompt, and deliver the corresponding response.*/
 	while (prompt_state)
 	{
-
+		//tkn = strtok(pstr, "\n");
 /*splits the string returned from the prompt function into seperate words, and store each word in the argvec array.*/
 		str_token = strtok(pstr, " ");
 	
@@ -54,6 +65,7 @@ int main(int ac __attribute__((unused)), char *av[])
 
 		while(str_token != NULL)
 		{
+
 			argvec[i] = str_token;
 
 			str_token = strtok(NULL, " ");
@@ -86,7 +98,7 @@ int main(int ac __attribute__((unused)), char *av[])
 		}
 
 		/*list files and directories*/
-		else if (strcmp(av_token, "ls") == 0)
+		else if (strcmp(av_token, "ls\n") == 0)
 		{
 			pthnstr = "/bin/ls";
 			if (execve(pthnstr, argvec, envec) == -1)
@@ -104,7 +116,7 @@ int main(int ac __attribute__((unused)), char *av[])
 		}
 */
 		/*prints working directory*/
-		else if (strcmp(av_token, "pwd") == 0)
+		else if (strcmp(av_token, "pwd\n") == 0)
 		{
 			getcwd(buff, 1024);
 			dprintf(STDOUT_FILENO, "%s\n", buff);
