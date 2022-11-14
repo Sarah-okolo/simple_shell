@@ -9,9 +9,9 @@
 
 void welcome_screen(void)
 {
-		printf("\n\t==============================================\n");
-		printf("\t                Simple_Shell\n");
-		printf("\t----------------------------------------------\n");
-		printf("\t     A lightweight UNIX command interpreter\n");
-		printf("\t==============================================\n\n\n");
+		print_str("\n\t==============================================\n", 1);
+		print_str("\t                Simple_Shell\n", 1);
+		print_str("\t----------------------------------------------\n", 1);
+		print_str("\t     A lightweight UNIX command interpreter\n", 1);
+		print_str("\t==============================================\n\n\n", 1);
 }
