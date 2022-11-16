@@ -11,14 +11,14 @@ int main(__attribute__((unused)) int ac, char **av)
 {
 	char *line;
 	size_t size;
-	int command_counter, GBSH_IS_INTERACTIVE;
+	int command_counter/*GBSH_IS_INTERACTIVE*/;
 
-/* prints the starting screen only is shell is in interactive mode */
+/* prints the starting screen only is shell is in interactive mode 
 	GBSH_IS_INTERACTIVE = isatty(STDIN_FILENO);
 
 	if (GBSH_IS_INTERACTIVE)
 		welcome_screen();
-
+*/
 	command_counter = 0;
 	signal(SIGINT, SIG_IGN);
 	do {
