@@ -62,7 +62,7 @@ void exit_b(char *line)
 		_write_char('\n');
 		print_str("exiting simple shell\n", 1);
 		print_str("======================================\n\n", 1);
-		exit(0);
+		exit(isatty(STDIN_FILENO));
 	}
 	exit(2);
 }
