@@ -56,10 +56,10 @@ void env_b(__attribute__((unused))char *line)
 void exit_b(char *line)
 {
 	free(line);
-	_write_char('\n');
 
 	if (isatty(STDIN_FILENO))
 	{
+	_write_char('\n');
 	print_str("exiting simple shell\n", 1);
 	print_str("======================================\n\n", 1);
 	}
