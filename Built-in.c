@@ -64,7 +64,7 @@ void exit_b(char *line)
 		print_str("======================================\n\n", 1);
 		exit(2);
 	}
-	exit(0);
+	exit(1);
 }
 
 /**
