@@ -15,3 +15,9 @@ Once compiled, to start the program, run:
 ```./sish```  
 To exit the program, use the ```exit``` command
   
+Features
+--------
+
+* Basic commands: `exit`, `pwd`, `clear`, `cd`, ...
+* Environment management with `setenv` and `unsetenv`
+* Program invocation with forking and child processes
