@@ -1,4 +1,4 @@
-## Simple_Shell
+## Simple_Shell(sish)
 
 ## Synopsis
 This is a simple and basic implementation of a UNIX command line interpreter.
@@ -21,3 +21,16 @@ Features
 * Basic commands: `exit`, `pwd`, `clear`, `cd`, ...
 * Environment management with `setenv` and `unsetenv`
 * Program invocation with forking and child processes
+
+#### Interactive Mode
+
+In interactive mode, simply run the program and wait for the prompt to appear. From there, you can type commands freely, exiting with either the "exit" command or ctrl-D.
+
+#### Non-Interactive Mode
+
+In non-interactive mode, echo your desired command and pipe it into the program like this:
+
+```sh
+echo "ls" | ./sish
+```
+The program automatically exits after finishing your desired command(s).
